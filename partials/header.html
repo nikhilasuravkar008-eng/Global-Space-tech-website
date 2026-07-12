@@ -1,0 +1,75 @@
+<header class="site-header">
+  <nav class="navbar">
+    <a href="/index.html" class="navbar__logo">
+      <img src="/assets/logos/globalspace-logo.png" alt="GlobalSpace Technologies">
+    </a>
+
+    <button class="navbar__mobile-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+
+    <div class="navbar__links" data-nav-links>
+      <a href="/index.html" class="nav-link" data-nav-current="home">Home</a>
+      <a href="/about.html" class="nav-link" data-nav-current="about">About Us</a>
+
+      <div class="nav-dropdown" data-mega-wrapper>
+        <button class="nav-trigger" data-mega-trigger data-nav-current="products">
+          Products <span class="caret">▾</span>
+        </button>
+
+        <div class="mega-menu" data-mega-menu>
+          <div class="mega-menu__inner">
+            <div class="mega-menu__cats">
+              <div class="mega-menu__cats-label">Platforms</div>
+
+              <button class="mega-cat is-active" data-mega-cat="vodo">
+                <span>
+                  <span class="mega-cat__name">VODO</span>
+                  <span class="mega-cat__tag">Unified Commercial Excellence Platform</span>
+                </span>
+                <span class="mega-cat__arrow">→</span>
+              </button>
+
+              <button class="mega-cat" data-mega-cat="mediola">
+                <span>
+                  <span class="mega-cat__name">Mediola</span>
+                  <span class="mega-cat__tag">Aesthetic &amp; Clinical Intelligence Platform</span>
+                </span>
+                <span class="mega-cat__arrow">→</span>
+              </button>
+
+              <button class="mega-cat" data-mega-cat="docexa">
+                <span>
+                  <span class="mega-cat__name">DocExa</span>
+                  <span class="mega-cat__tag">Healthcare Operations Platform</span>
+                </span>
+                <span class="mega-cat__arrow">→</span>
+              </button>
+            </div>
+
+            <div class="mega-menu__panel">
+              <div class="mega-menu__panel-head" data-mega-panel-head>
+                <strong>VODO</strong>
+                <span>Unified Commercial Excellence Platform</span>
+              </div>
+
+              <div class="mega-menu__items" data-mega-panel-items>
+                <!-- populated by main.js based on active category -->
+              </div>
+
+              <div class="mega-menu__cta">
+                <div class="mega-menu__cta-text">
+                  <strong>Explore the Ecosystem</strong>
+                  <span>Discover how VODO, Mediola, and DocExa work together to create a connected healthcare intelligence platform.</span>
+                </div>
+                <a href="/products.html" class="btn btn-primary">View All Products →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="/terms.html" class="nav-link" data-nav-current="terms">Terms &amp; Policy</a>
+    </div>
+  </nav>
+</header>
