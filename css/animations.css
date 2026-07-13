@@ -61,6 +61,7 @@
    IntersectionObserver — element gets .is-visible
    added when it enters the viewport)
    ============================================ */
+
 .reveal {
   opacity: 0;
   transform: translateY(28px);
@@ -74,21 +75,3 @@
 .reveal-delay-2 { transition-delay: 0.16s; }
 .reveal-delay-3 { transition-delay: 0.24s; }
 .reveal-delay-4 { transition-delay: 0.32s; }
-
-/* Ambient float loop, used on hero blobs/cards */
-.anim-float { animation: gstFloat 5s ease-in-out infinite; }
-.anim-drift { animation: gstDrift 6s ease-in-out infinite alternate; }
-.anim-pulse { animation: gstPulse 2.6s ease-in-out infinite; }
-.anim-spin  { animation: gstSpin 18s linear infinite; }
-.anim-spin-rev { animation: gstSpinRev 22s linear infinite; }
-
-/* Respect reduced-motion preference */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-  .reveal { opacity: 1; transform: none; }
-}
