@@ -250,9 +250,7 @@ main {
 }
 
 /* ---------- ECOSYSTEM / INTELLIGENT CORE ---------- */
-.ecosystem {
-  text-align: center;
-}
+.ecosystem { text-align: center; background: var(--bg-2); }
 
 .ecosystem h2 {
   font-family: var(--font-display);
