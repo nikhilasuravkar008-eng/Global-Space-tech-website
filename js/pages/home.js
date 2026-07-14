@@ -50,9 +50,26 @@ function initHeroSlider() {
     restart();
   }
 
+  function initHoverVideos() {
+    document.querySelectorAll('[data-hover-video]').forEach((wrap) => {
+      const video = wrap.querySelector('.product-media__video');
+      if (!video) return;
+
+      wrap.addEventListener('mouseenter', () => {
+        video.currentTime = 0;
+        video.play().catch(() => {});
+      });
+      wrap.addEventListener('mouseleave', () => {
+        video.pause();
+        video.currentTime = 0;
+      });
+    });
+  }
+
   function init() {
     initDemoSelect();
     initHeroSlider();
+    initHoverVideos();
   }
 
   if (document.readyState === 'loading') {

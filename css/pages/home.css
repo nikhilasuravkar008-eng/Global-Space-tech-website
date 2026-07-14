@@ -597,9 +597,7 @@ main {
   padding: 56px 0;
 }
 
-.product-brief:nth-child(even) .product-brief__visual {
-  order: -1;
-}
+.product-brief--reverse .product-brief__visual { order: -1; }
 
 .product-tag {
   display: inline-flex;
@@ -659,78 +657,38 @@ main {
 }
 
 .product-brief__visual {
-  background: var(--bg-card);
-  border: 1px solid var(--card-bd);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
-  padding: 22px;
+  overflow: hidden;
   min-height: 280px;
 }
 
-.visual-card__head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 18px;
-  font-size: 0.78rem;
-  color: var(--text-2);
+.product-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
 }
-
-.visual-card__head strong {
-  color: var(--text);
-  font-weight: 700;
-}
-
-.visual-bar {
-  height: 8px;
-  border-radius: 4px;
-  background: var(--sub);
-  overflow: hidden;
-  margin: 8px 0;
-}
-
-.visual-bar span {
-  display: block;
+.product-media__image,
+.product-media__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, var(--teal), var(--teal-light));
-  border-radius: 4px;
+  object-fit: cover;
 }
-
-.visual-stat-row {
-  display: flex;
-  gap: 14px;
-  margin-top: 18px;
+.product-media__image {
+  transition: opacity 0.5s ease;
+  z-index: 2;
 }
-
-.visual-stat {
-  flex: 1;
-  background: var(--sub);
-  border: 1px solid var(--sub-bd);
-  border-radius: 12px;
-  padding: 14px;
+.product-media__video {
+  z-index: 1;
 }
-
-.visual-stat strong {
-  display: block;
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: var(--text);
-}
-
-.visual-stat span {
-  font-size: 0.7rem;
-  color: var(--text-muted);
+.product-media:hover .product-media__image {
+  opacity: 0;
 }
 
 @media (max-width: 880px) {
-  .product-brief {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .product-brief:nth-child(even) .product-brief__visual {
-    order: 0;
-  }
+  .product-brief { grid-template-columns: 1fr; gap: 32px; }
+  .product-brief--reverse .product-brief__visual { order: 0; }
 }
 
 /* ---------- WHY GLOBALSPACE ---------- */
