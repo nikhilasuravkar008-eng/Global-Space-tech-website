@@ -73,8 +73,18 @@
 .reveal-delay-2 { animation-delay: 0.16s; }
 .reveal-delay-3 { animation-delay: 0.24s; }
 .reveal-delay-4 { animation-delay: 0.32s; }
+.reveal-delay-5 { animation-delay: 0.4s; }
 
 @keyframes gstRevealIn {
   from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Why GlobalSpace card stagger (moved from inline index.html) */
+#why-us .why-card {
+  opacity: 0;
+  transform: translateY(28px);
+}
+#why-us .why-card.why-in {
+  animation: gstRevealIn 1.4s cubic-bezier(.16,1,.3,1) forwards;
 }

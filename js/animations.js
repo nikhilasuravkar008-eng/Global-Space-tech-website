@@ -2,6 +2,8 @@
    ANIMATIONS.JS
    - Scroll-reveal: adds .is-visible to .reveal
      elements as they enter the viewport
+   - Why GlobalSpace grid: staggers cards in
+     sequence as they enter the viewport
    ============================================ */
 
 (function () {
@@ -23,18 +25,45 @@
           }
         });
       },
-      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.15, rootMargin: '0px 0px -20% 0px' }
     );
 
     targets.forEach((el) => observer.observe(el));
   }
 
-  function init() {
-    initScrollReveal();
+  function initWhyGridStagger() {
+    const grid = document.querySelector('[data-why-grid]');
+    if (!grid) return;
+    const cards = grid.querySelectorAll('.why-card');
+    if (!cards.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      cards.forEach((card) => card.classList.add('why-in'));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const i = Array.prototype.indexOf.call(cards, entry.target);
+            entry.target.style.animationDelay = (i * 0.25) + 's';
+            entry.target.classList.add('why-in');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -15% 0px' }
+    );
+
+    cards.forEach((card) => observer.observe(card));
   }
 
-  // Reveal targets exist in static HTML immediately, but if a page later
-  // injects content after partialsLoaded, re-run so nothing is missed.
+  function init() {
+    initScrollReveal();
+    initWhyGridStagger();
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
