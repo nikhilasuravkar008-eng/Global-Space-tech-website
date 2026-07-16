@@ -1,0 +1,62 @@
+/* ============================================
+   TEAM.CSS — Team page styles
+   ============================================ */
+
+main { padding-top: var(--header-height); }
+.section { padding: 80px 0; }
+
+.team-intro { text-align: center; }
+.team-intro h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 4.4vw, 3.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+}
+.team-intro h1 .accent-teal {
+  font-style: italic;
+  background: linear-gradient(120deg, var(--teal-light), var(--teal));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.team-intro p { color: var(--text-2); max-width: 560px; margin: 0 auto; }
+
+.team-list { padding-top: 20px; }
+.team-member {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 48px;
+  align-items: start;
+  padding: 48px 0;
+  border-bottom: 1px solid var(--divider);
+  scroll-margin-top: calc(var(--header-height) + 24px);
+}
+.team-member:last-child { border-bottom: none; }
+
+.team-member__photo {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 3 / 3.4;
+}
+.team-member__photo img { width: 100%; height: 100%; object-fit: cover; }
+
+.team-member__info h2 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.7rem;
+  margin: 10px 0 16px;
+}
+.team-member__info p {
+  color: var(--text-2);
+  font-size: 0.96rem;
+  line-height: 1.7;
+  margin-bottom: 14px;
+  max-width: 640px;
+}
+
+@media (max-width: 780px) {
+  .team-member { grid-template-columns: 1fr; gap: 24px; }
+  .team-member__photo { max-width: 260px; }
+}
