@@ -78,3 +78,30 @@ function initHeroSlider() {
     init();
   }
 })();
+
+/* ============================================
+   LOGO MARQUEE — optional touch pause support
+   ============================================ */
+(function () {
+  function initLogoMarquee() {
+    const marquee = document.querySelector('[data-logo-marquee]');
+    if (!marquee) return;
+
+    const track = marquee.querySelector('.logo-marquee__track');
+    if (!track) return;
+
+    marquee.addEventListener('touchstart', () => {
+      track.style.animationPlayState = 'paused';
+    }, { passive: true });
+
+    marquee.addEventListener('touchend', () => {
+      track.style.animationPlayState = 'running';
+    }, { passive: true });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLogoMarquee);
+  } else {
+    initLogoMarquee();
+  }
+})();
