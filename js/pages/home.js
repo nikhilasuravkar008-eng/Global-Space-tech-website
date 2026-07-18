@@ -3,6 +3,8 @@
    ============================================ */
 
 (function () {
+  gsap.registerPlugin(ScrollTrigger);
+
   function initDemoSelect() {
     const wrap = document.querySelector('[data-demo-select]');
     if (!wrap) return;
@@ -66,10 +68,53 @@ function initHeroSlider() {
     });
   }
 
+function initSolutionsScrollAnim() {
+    const divider = document.querySelector('.solutions-divider');
+    if (!divider) return;
+
+    gsap.from(divider.querySelectorAll('.eyebrow, h2'), {
+      opacity: 0,
+      y: 32,
+      duration: 0.8,
+      ease: 'power3.out',
+      stagger: 0.15,
+      scrollTrigger: {
+        trigger: divider,
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      }
+    });
+  }
+
+  function initProductBriefScrollAnim() {
+    document.querySelectorAll('.product-brief').forEach((brief) => {
+      const copy = brief.querySelector('.product-brief__copy');
+      const visual = brief.querySelector('.product-brief__visual');
+      if (!copy || !visual) return;
+
+      const isReversed = brief.classList.contains('product-brief--reverse');
+      const copyFromX = isReversed ? 70 : -70;
+      const visualFromX = isReversed ? -70 : 70;
+
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: brief,
+          start: 'top 85%',
+          end: 'top 40%',
+          scrub: 1
+        }
+      })
+      .from(copy, { x: copyFromX, opacity: 0, ease: 'none' }, 0)
+      .from(visual, { x: visualFromX, opacity: 0, ease: 'none' }, 0);
+    });
+  }
+
   function init() {
     initDemoSelect();
     initHeroSlider();
     initHoverVideos();
+    initSolutionsScrollAnim();
+    initProductBriefScrollAnim();
   }
 
   if (document.readyState === 'loading') {
